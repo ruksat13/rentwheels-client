@@ -3,6 +3,7 @@ import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
+import BrowseCars from './pages/Cars/BrowseCars'
 import NotFound from './pages/NotFound'
 import PrivateRoute from './routes/PrivateRoute'
 import { Toaster } from 'react-hot-toast'
@@ -16,6 +17,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="cars" element={<BrowseCars />} />
           <Route
             path="add-car"
             element={
@@ -46,7 +48,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route path="cars" element={<div className="min-h-screen bg-gray-950 text-white flex items-center justify-center"><h1 className="text-2xl">Browse Cars - Coming Soon</h1></div>} />
         </Route>
         <Route path="*" element={<NotFound />} />
       </Routes>
