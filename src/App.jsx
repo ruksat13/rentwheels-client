@@ -6,6 +6,7 @@ import Register from './pages/Auth/Register'
 import BrowseCars from './pages/Cars/BrowseCars'
 import AddCar from './pages/Cars/AddCar'
 import MyListings from './pages/Dashboard/MyListings'
+import CarDetails from './pages/Cars/CarDetails'
 import NotFound from './pages/NotFound'
 import PrivateRoute from './routes/PrivateRoute'
 import { Toaster } from 'react-hot-toast'
@@ -20,6 +21,14 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
           <Route path="cars" element={<BrowseCars />} />
+          <Route
+            path="cars/:id"
+            element={
+              <PrivateRoute>
+                <CarDetails />
+              </PrivateRoute>
+            }
+          />
           <Route
             path="add-car"
             element={
