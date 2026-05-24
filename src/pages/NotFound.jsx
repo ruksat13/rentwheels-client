@@ -18,10 +18,10 @@ const NotFound = () => {
                     The page you are looking for does not exist or has been moved. Let us take you back on the road!
                 </p>
                 <Link
-                    to="/"
-                    className="inline-block bg-orange-400 hover:bg-orange-500 text-white font-semibold px-8 py-3.5 rounded-xl transition text-sm shadow-lg shadow-orange-400/30"
+                    to="/cars"
+                    className="inline-block mt-3 border border-orange-400 text-orange-400 hover:bg-orange-400 hover:text-white font-semibold px-8 py-3.5 rounded-xl transition text-sm ml-3"
                 >
-                    ← Back to Home
+                    Browse Cars
                 </Link>
             </motion.div>
         </div>
