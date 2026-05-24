@@ -49,6 +49,7 @@ const MyBookings = () => {
                                     <th className="px-6 py-4">Location</th>
                                     <th className="px-6 py-4">Provider</th>
                                     <th className="px-6 py-4">Booked At</th>
+                                    <th className="px-6 py-4">Status</th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-800">
@@ -70,6 +71,11 @@ const MyBookings = () => {
                                                 month: 'short',
                                                 day: 'numeric'
                                             })}
+                                        </td>
+                                        <td className="px-6 py-4">
+                                            <span className="bg-green-500/20 text-green-400 border border-green-500/30 px-3 py-1 rounded-full text-xs font-semibold">
+                                                Confirmed
+                                            </span>
                                         </td>
                                     </tr>
                                 ))}
