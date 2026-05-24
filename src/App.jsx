@@ -4,6 +4,7 @@ import Home from './pages/Home/Home'
 import Login from './pages/Auth/Login'
 import Register from './pages/Auth/Register'
 import BrowseCars from './pages/Cars/BrowseCars'
+import AddCar from './pages/Cars/AddCar'
 import NotFound from './pages/NotFound'
 import PrivateRoute from './routes/PrivateRoute'
 import { Toaster } from 'react-hot-toast'
@@ -22,9 +23,7 @@ function App() {
             path="add-car"
             element={
               <PrivateRoute>
-                <div className="min-h-screen bg-gray-950 text-white flex items-center justify-center">
-                  <h1 className="text-2xl">Add Car Page - Coming Soon</h1>
-                </div>
+                <AddCar />
               </PrivateRoute>
             }
           />
