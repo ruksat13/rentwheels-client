@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import axios from 'axios'
 import { motion } from 'framer-motion'
 
@@ -7,6 +7,13 @@ const BrowseCars = () => {
     const [cars, setCars] = useState([])
     const [loading, setLoading] = useState(true)
     const [search, setSearch] = useState('')
+    const location = useLocation()
+
+    useEffect(() => {
+        const params = new URLSearchParams(location.search)
+        const q = params.get('search')
+        if (q) setSearch(q)
+    }, [location.search])
 
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_API_URL}/cars`)

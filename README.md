@@ -3,7 +3,7 @@
 A full-stack car rental platform built with the MERN stack that connects users with local car owners and rental providers.
 
 ## 🔗 Live Site
-[https://rentwheels-client.netlify.app](https://rentwheels-client.netlify.app)
+[https://gleaming-pastelito-21e73d.netlify.app](https://gleaming-pastelito-21e73d.netlify.app)
 
 ## ✨ Main Features
 

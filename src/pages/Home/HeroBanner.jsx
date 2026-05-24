@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useTypewriter, Cursor } from 'react-simple-typewriter'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 
 const slides = [
@@ -26,6 +26,8 @@ const slides = [
 
 const HeroBanner = () => {
     const [currentSlide, setCurrentSlide] = useState(0)
+    const [searchQuery, setSearchQuery] = useState('')
+    const navigate = useNavigate()
 
     const [text] = useTypewriter({
         words: ['Perfect Ride', 'Best Deal', 'Dream Car', 'Next Adventure'],
@@ -40,9 +42,16 @@ const HeroBanner = () => {
         return () => clearInterval(interval)
     }, [])
 
+    const handleSearch = () => {
+        if (searchQuery.trim()) {
+            navigate(`/cars?search=${searchQuery}`)
+        } else {
+            navigate('/cars')
+        }
+    }
+
     return (
         <div className="relative h-[90vh] overflow-hidden">
-            {/* Background Slides */}
             {slides.map((slide, index) => (
                 <div
                     key={slide.id}
@@ -53,12 +62,12 @@ const HeroBanner = () => {
                 </div>
             ))}
 
-            {/* Content */}
             <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-6">
                 <motion.div
                     initial={{ opacity: 0, y: 40 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8 }}
+                    className="w-full max-w-3xl"
                 >
                     <span className="bg-orange-400/20 text-orange-400 border border-orange-400/40 text-xs font-semibold px-4 py-1.5 rounded-full uppercase tracking-widest mb-6 inline-block">
                         #1 Car Rental Platform in Bangladesh
@@ -73,6 +82,24 @@ const HeroBanner = () => {
                     <p className="text-gray-300 text-lg md:text-xl max-w-2xl mx-auto mb-8">
                         {slides[currentSlide].subtitle}
                     </p>
+
+                    {/* Search Bar */}
+                    <div className="flex items-center bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl overflow-hidden mb-8 max-w-lg mx-auto">
+                        <input
+                            type="text"
+                            placeholder="Search cars by name..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            onKeyDown={(e) => e.key === 'Enter' && handleSearch()}
+                            className="flex-1 bg-transparent text-white placeholder-gray-400 px-5 py-3.5 text-sm focus:outline-none"
+                        />
+                        <button
+                            onClick={handleSearch}
+                            className="bg-orange-400 hover:bg-orange-500 text-white px-6 py-3.5 text-sm font-semibold transition"
+                        >
+                            Search
+                        </button>
+                    </div>
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Link
@@ -90,7 +117,6 @@ const HeroBanner = () => {
                     </div>
                 </motion.div>
 
-                {/* Slide Dots */}
                 <div className="absolute bottom-8 flex gap-2">
                     {slides.map((_, index) => (
                         <button
